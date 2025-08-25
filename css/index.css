@@ -1,0 +1,560 @@
+/* Samsung splash screen */
+#samsung-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease;
+}
+
+.samsung-text {
+    color: white;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: text-appear 1s ease-out 0.5s forwards;
+}
+.circle-expand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: circle-expand 1.5s ease-out 2s forwards;
+}
+
+@keyframes text-appear {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes circle-expand {
+    0% { width: 0; height: 0; opacity: 0.8; }
+    100% { width: 200vmax; height: 200vmax; opacity: 0; }
+}
+
+.corner-img {
+    position: fixed;   /* ekranda harakatlanmaydi */
+    top: 10px;         /* yuqoridan 10px */
+    right: 10px;       /* o‘ngdan 10px */
+    width: 40px;       /* rasm o‘lchami */
+    height: auto;      
+    z-index: 100;     /* boshqa elementlardan ustun bo‘ladi */
+}
+
+/* Hero section styles */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 253, 253, 0) 0%, rgba(0, 0, 0, 0.5) 100%), url('../image/background.jpeg') center/cover no-repeat;
+    padding-top: 80px;
+}
+
+.hero-content {
+    position: absolute;
+    top: 15%;             
+    left: 39%;
+    transform: translateX(-50%);
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(255, 252, 252, 0);
+}
+
+.hero-content h5 {
+    font-size: 1.5rem;
+    font-weight: 80; 
+    margin-bottom: 24px;
+    color: #fffafa !important;
+    
+}
+
+.hero-content h4 span {
+    display: block; 
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 32px;
+    opacity: 0.9;
+    line-height: 1.6;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0);
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 150px;
+    background: rgba(194, 195, 197, 0.493);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    margin: 8px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0);
+}
+
+
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+
+.target{
+    display: inline-block;
+    color: white;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 300px;
+}
+
+.social-links {
+    margin-top: 40px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    background: var(--gradient);
+    color: white;
+}
+
+/* Floating elements */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0.1;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    50% {
+        transform: translate(20px, 20px) rotate(180deg);
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .samsung-text {
+        font-size: 40px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+    
+    .social-links a {
+        width: 44px;
+        height: 44px;
+        margin: 0 8px;
+    }
+}
+
+/* Mobil menyu tugmasi uchun */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    z-index: 1001;
+    position: relative;
+}
+
+.mobile-menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobil ekranlar uchun */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--card-bg);
+        flex-direction: column;
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    
+    .nav-links.show {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 18px;
+    }
+    
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .theme-toggle {
+        margin: 15px 0;
+        width: 100%;
+        border-radius: 6px;
+        height: auto;
+        padding: 12px;
+    }
+    
+    /* Yopish tugmasi */
+    .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Samsung splash screen */
+#samsung-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease;
+}
+
+.samsung-text {
+    color: white;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: text-appear 1s ease-out 0.5s forwards;
+}
+.circle-expand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: circle-expand 1.5s ease-out 2s forwards;
+}
+
+@keyframes text-appear {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes circle-expand {
+    0% { width: 0; height: 0; opacity: 0.8; }
+    100% { width: 200vmax; height: 200vmax; opacity: 0; }
+}
+
+.corner-img {
+    position: fixed;   /* ekranda harakatlanmaydi */
+    top: 10px;         /* yuqoridan 10px */
+    right: 10px;       /* o‘ngdan 10px */
+    width: 40px;       /* rasm o‘lchami */
+    height: auto;      
+    z-index: 100;     /* boshqa elementlardan ustun bo‘ladi */
+}
+
+/* Hero section styles */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 253, 253, 0) 0%, rgba(0, 0, 0, 0.5) 100%), url('../image/background.jpeg') center/cover no-repeat;
+    padding-top: 80px;
+}
+
+.hero-content {
+    position: absolute;
+    top: 15%;             
+    left: 25%;
+    transform: translateX(-50%);
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(255, 252, 252, 0);
+}
+
+.hero-content h5 {
+    font-size: 0.5rem;
+    font-weight: 50; 
+    margin-bottom: 24px;
+    color: #fffafa !important;
+    
+}
+
+.hero-content h4 span {
+    display: block; 
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 32px;
+    opacity: 0.9;
+    line-height: 1.6;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0);
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 500px;
+    background: rgba(194, 195, 197, 0.493);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    margin: 8px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0);
+}
+
+
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+
+.target{
+    display: inline-block;
+    color: white;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 450px;
+}
+
+.social-links {
+    margin-top: 40px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    background: var(--gradient);
+    color: white;
+}
+
+/* Floating elements */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0.1;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    50% {
+        transform: translate(20px, 20px) rotate(180deg);
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .samsung-text {
+        font-size: 40px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+    
+    .social-links a {
+        width: 44px;
+        height: 44px;
+        margin: 0 8px;
+    }
+}
+
+}
