@@ -30,6 +30,7 @@
 }
 
 body {
+     zoom: 0.75;
     font-family: 'Roboto', 'SamsungOne', sans-serif;
     background-color: var(--bg);
     color: var(--text);
@@ -598,4 +599,5 @@ header {
         cursor: pointer;
     }
 }
+
   
