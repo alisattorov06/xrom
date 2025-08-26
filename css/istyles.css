@@ -1,0 +1,338 @@
+:root {
+    --primary: #0066ff;
+    /* Samsung ko'k rangi */
+    --secondary: #8e8e93;
+    /* Samsung kulrang */
+    --text: #f5f6fa;
+    --bg: #121212;
+    /* One UI qora fon */
+    --card-bg: #1e1e1e;
+    --surface: #2c2c2e;
+    /* Samsung sirt rangi */
+    --accent: #00b2ff;
+    /* Samsung accent */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --gradient: linear-gradient(135deg, #0066ff 0%, #00b2ff 100%);
+}
+
+[data-theme="light"] {
+    --primary: #0066ff;
+    --secondary: #000000;
+    --text: #f9f6f6;
+    --bg: #f5f6fa;
+    --card-bg: #ffffff;
+    --surface: #f2f2f7;
+    /* One UI yorqin sirt */
+    --accent: #0066ff;
+    --shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
+    --gradient: linear-gradient(135deg, #0066ff 0%, #00b2ff 100%);
+}
+
+#samsung-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease;
+}
+
+.samsung-text {
+    color: white;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: text-appear 1s ease-out 0.5s forwards;
+}
+
+.circle-expand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: circle-expand 1.5s ease-out 2s forwards;
+}
+
+@keyframes text-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes circle-expand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.8;
+    }
+
+    100% {
+        width: 200vmax;
+        height: 200vmax;
+        opacity: 0;
+    }
+}
+
+.corner-img {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: auto;
+    z-index: 100;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+@font-face {
+    font-family: 'font';
+    src: url('font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'font', sans-serif;
+    background-image: url('../image/background.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    background-color: #00000000;
+    position: relative;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    /* ustma-ust joylashuv */
+    align-items: center;
+    /* gorizontal markazlash */
+    gap: 10px;
+    /* elementlar orasidagi bo'shliq */
+}
+
+.hero-content h1 {
+    color: #fff;
+    /* oq rang */
+    font-size: 3.5rem;
+    /* matn kattaligi */
+    margin: 0;
+}
+
+.hero-content h4 {
+    color: #fff;
+    /* oq rang */
+    font-size: 0.8rem;
+    /* kichkina matn */
+    margin: 0;
+    font-weight: normal;
+}
+
+
+/* Hero tugmalar */
+.hero-buttons {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.hero-buttons a.btn,
+.hero-buttons a.target {
+    width: 80%;
+    padding: 10px 0;
+    text-align: center;
+    display: block;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.hero-buttons a.btn {
+    background-color: #f5f8f69c;
+    color: white;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.hero-buttons a.target {
+    color: #edeff3d6;
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+.social-links {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    background: var(--gradient);
+    color: white;
+}
+
+@media (max-width: 480px) {
+
+    .hero-section {
+        width: 100%;
+        height: 100vh;
+        background-color: #00000000;
+        position: relative;
+        padding-top: 100px;
+        box-sizing: border-box;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero-content h1 {
+        color: #fff;
+        font-size: 3.5rem;
+        margin: 0;
+    }
+
+    .hero-content h4 {
+        color: #fff;
+        font-size: 0.8rem;
+        margin: 0;
+        font-weight: normal;
+    }
+
+
+    /* Hero tugmalar */
+    .hero-buttons {
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .hero-buttons a.btn,
+    .hero-buttons a.target {
+        width: 80%;
+        padding: 10px 0;
+        text-align: center;
+        display: block;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    .hero-buttons a.btn {
+        background-color: #f5f8f69c;
+        color: white;
+        border-radius: 50px;
+        font-weight: bold;
+    }
+
+    .hero-buttons a.target {
+        color: #edeff3d6;
+        text-decoration: underline;
+        font-weight: normal;
+    }
+
+    .social-links {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+    }
+
+    .social-links a:hover {
+        transform: translateY(-5px);
+        background: var(--gradient);
+        color: white;
+    }
+}

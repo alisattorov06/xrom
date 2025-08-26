@@ -1,0 +1,708 @@
+:root {
+    --primary: #0066ff; /* Samsung ko'k rangi */
+    --secondary: #8e8e93; /* Samsung kulrang */
+    --text: #f5f6fa;
+    --bg: #121212; /* One UI qora fon */
+    --card-bg: #1e1e1e;
+    --surface: #2c2c2e; /* Samsung sirt rangi */
+    --accent: #00b2ff; /* Samsung accent */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --gradient: linear-gradient(135deg, #0066ff 0%, #00b2ff 100%);
+}
+
+[data-theme="light"] {
+    --primary: #0066ff;
+    --secondary: #000000;
+    --text: #1e1e1e;
+    --bg: #f5f6fa;
+    --card-bg: #ffffff;
+    --surface: #f2f2f7; /* One UI yorqin sirt */
+    --accent: #0066ff;
+    --shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
+    --gradient: linear-gradient(135deg, #0066ff 0%, #00b2ff 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+@font-face {
+    font-family: 'font';           
+    src: url('font.ttf') format('truetype');  
+    font-weight: normal;              
+    font-style: normal;              
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family:'font', sans-serif;
+    background-image: url('../image/background_blog.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--text);
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-links.show {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;   
+    right: 50px;
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    z-index: 2000;
+}
+
+/* One UI uslubidagi header */
+header {
+    padding: 16px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+[data-theme="light"] header {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.5px;
+}
+
+.logo i {
+    margin-right: 10px;
+    font-size: 26px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 28px;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 6px 0;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+.theme-toggle {
+    background: var(--surface);
+    border: none;
+    color: var(--text);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+
+
+/* One UI uslubidagi blog kartalari */
+.section {
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.blog-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .blog-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.blog-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.blog-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-date {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 12px;
+    display: block;
+}
+
+@font-face {
+    font-family: 'BlogTitleFont';
+    src: url('font2.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.blog-title {
+    font-family: 'BlogTitleFont',sans-serif;
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.blog-excerpt {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.read-more {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.read-more i {
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover i {
+    transform: translateX(5px);
+}
+
+/* One UI uslubidagi qidiruv paneli */
+.search-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 560px;
+    padding: 16px 20px;
+    background-color: var(--surface);
+    border: none;
+    border-radius: 12px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+}
+
+.search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* One UI uslubidagi animatsiyalar */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tema almashtirish tugmasi */
+.theme-toggle i {
+    transition: all 0.5s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(180deg) scale(1.2);
+}
+
+footer {
+    background-color: var(--card-bg);
+    padding: 30px 0;
+    text-align: center;
+    flex-shrink: 0;
+    
+    margin-top: auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 20px;
+    margin-top: auto;
+}
+
+.footer-links li {
+    margin: 0 15px;
+}
+
+.footer-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    color: var(--text);
+    margin-right: 15px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.copyright {
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+/* Mobil menyu */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    
+    .mobile-menu-btn {
+        display: none;
+        background: var(--surface);
+        border: none;
+        color: var(--text);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow);
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .section {
+        padding: 80px 0;
+    }
+}
+
+/* One UI uslubidagi qo'shimcha elementlar */
+.card-label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--gradient);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.rom-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--surface);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+ 
+/* Footer */
+ footer {
+    background-color: var(--card-bg);
+    padding: 30px 0;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.footer-links li {
+    margin: 0 15px;
+}
+
+.footer-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    color: var(--text);
+    margin-right: 15px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.copyright {
+    opacity: 0.7;
+    font-size: 14px;
+}
+/* Responsive styles */
+        @media (max-width: 768px) {
+            .contact-info {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text);
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Contact umumiy container */
+        .contact-container {
+            display: flex;
+            color:#f5f6fa;  
+            justify-content: space-between;
+            align-items: flex-start; 
+            gap: 40px;
+            flex-wrap: wrap; 
+        }
+        .contact-item {
+            display: flex;
+            color:#f5f6fa;
+            align-items: center; 
+            gap: 10px;           
+            margin-bottom: 15px;  
+        }
+        .contact-text a {
+            color: #00aaff;       
+            text-decoration: none; 
+            font-size: 14px;
+        }
+        
+        .contact-text a:hover {
+            text-decoration: underline; 
+            color: #ffaa00;            
+        }
+  
+        /* Chap taraf */
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+        }
+        .contact-icon {
+            font-size: 20px; 
+            color: #00aaff;   
+        }
+  
+        /* O‘ng tarafdagi blokni rostlash */
+        .contact-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+  
+        /* Warning bloki */
+        .contact-text-block {
+            max-width: 400px;
+            margin-top: -20px; 
+            padding: 16px 20px;
+            border-radius: 12px;
+            background: #0e131a;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        /* Responsive uchun */
+        @media (max-width: 768px) {
+        .contact-container {
+            flex-direction: column;
+        }
+        .contact-wrapper {
+            justify-content: flex-start;
+        }
+        .contact-text-block {
+            margin-top: 10px; 
+    }
+  }
+
+  /* Mobil menyu tugmasi uchun */
+.mobile-menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    z-index: 1001;
+    position: relative;
+}
+
+.mobile-menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobil ekranlar uchun */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--card-bg);
+        flex-direction: column;
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    
+    .nav-links.show {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 18px;
+    }
+    
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .theme-toggle {
+        margin: 15px 0;
+        width: 100%;
+        border-radius: 6px;
+        height: auto;
+        padding: 12px;
+    }
+    
+    /* Yopish tugmasi */
+    .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+  
