@@ -190,8 +190,8 @@ body {
 }
 
 .hero-buttons a.btn {
-    background-color: #f5f8f69c;
-    color: white;
+    background-color: #f5f8f65b;
+    color: rgb(255, 255, 255);
     border-radius: 50px;
     font-weight: bold;
 }
